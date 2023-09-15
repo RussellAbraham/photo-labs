@@ -9,8 +9,8 @@ const PhotoListItem = (props) => {
     imageSource,
     username,
     profile,
-  } = props.sampleDataForPhotoListItem;
-  
+  } = props.data;
+  console.log(props)
   /* Insert React */
 
   return (
