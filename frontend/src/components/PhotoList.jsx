@@ -65,7 +65,7 @@ const PhotoList = () => {
           key={index}
           data={data}
         />
-      )     
+      );    
   });
 
   return (
