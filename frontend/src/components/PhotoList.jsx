@@ -4,12 +4,15 @@ import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
 
 const PhotoList = (props) => {
-  const {photos} = props;
+  const {photos, toggleFavourites, favourites} = props;
   const photosToRender = photos.map((data, index) => {
+    const isFavourited = favourites.includes(data.id);
     return (      
         <PhotoListItem
           key={index}
           data={data}
+          isFavourited={isFavourited}
+          toggleFavourites={()=>toggleFavourites(data.id)}
         />
       );    
   });
