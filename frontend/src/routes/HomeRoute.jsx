@@ -6,7 +6,7 @@ import PhotoList from "../components/PhotoList";
 
 const HomeRoute = (props) => {
 
-  const { topics, photos } = props;
+  const { topics, photos, onPhotoClick } = props;
 
   const [favourites, setFavourites] = useState([]);
   
@@ -21,7 +21,12 @@ const HomeRoute = (props) => {
   return (
     <div className="home-route">
       <TopNavigation topics={topics} favourites={favourites} />
-      <PhotoList photos={photos} toggleFavourites={toggleFavourites} favourites={favourites} />
+      <PhotoList 
+        photos={photos} 
+        toggleFavourites={toggleFavourites} 
+        favourites={favourites} 
+        onPhotoClick={onPhotoClick}
+      />
     </div>
   );
 };

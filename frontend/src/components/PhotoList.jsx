@@ -4,7 +4,7 @@ import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
 
 const PhotoList = (props) => {
-  const {photos, toggleFavourites, favourites} = props;
+  const {photos, toggleFavourites, favourites, onPhotoClick} = props;
   const photosToRender = photos.map((data, index) => {
     const isFavourited = favourites.includes(data.id);
     return (      
@@ -13,6 +13,7 @@ const PhotoList = (props) => {
           data={data}
           isFavourited={isFavourited}
           toggleFavourites={()=>toggleFavourites(data.id)}
+          onPhotoClick={onPhotoClick}
         />
       );    
   });
