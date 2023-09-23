@@ -11,6 +11,16 @@ import './App.scss';
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState(null);
+
+  const [favourites, setFavourites] = useState([]);
+  
+  const toggleFavourites = (photoId) => {
+    if(favourites.includes(photoId)){
+      setFavourites(favourites.filter((id) => id !== photoId))
+    } else {
+      setFavourites([...favourites, photoId])
+    }
+  };
   
   const openModal = (photo) => {
     const {
@@ -18,7 +28,7 @@ const App = () => {
       urls:{full,regular},
       user : {username,name,profile,id}
     } = photo.data;
-    setSelectedPhoto(regular);
+    setSelectedPhoto(photo.data);
     setIsModalOpen(true);
   };
 
@@ -29,8 +39,8 @@ const App = () => {
 
   return (
     <div className="App">
-      <HomeRoute topics={topics} photos={photos} onPhotoClick={openModal} />
-      {isModalOpen && (<PhotoDetailsModal onClose={closeModal} selectedPhoto={selectedPhoto} />)}
+      <HomeRoute topics={topics} photos={photos} onPhotoClick={openModal} favourites={favourites} />
+      {isModalOpen && (<PhotoDetailsModal onClose={closeModal} selectedPhoto={selectedPhoto} favourites={favourites} />)}
     </div>
   );
 };

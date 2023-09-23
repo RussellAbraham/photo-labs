@@ -20,7 +20,7 @@ const PhotoList = (props) => {
 
   return (
     <ul className="photo-list">
-      {photosToRender}
+      {props.children || photosToRender}
     </ul>
   );
 
