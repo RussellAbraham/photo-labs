@@ -34,7 +34,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         isModalOpen: true,
-        selectedPhoto: action.payload.photo,
+        selectedPhoto: action.payload.selectedPhoto,
       };
     case actionTypes.CLOSE_MODAL:
       return {
@@ -58,7 +58,7 @@ const useApplicationData = () => {
 
   const openModal = (photo) => {
     // Dispatch the OPEN_MODAL action
-    dispatch({ type: actionTypes.OPEN_MODAL, payload: { photo } });
+    dispatch({ type: actionTypes.OPEN_MODAL, payload: { selectedPhoto: photo.data } });
   };
 
   const closeModal = () => {

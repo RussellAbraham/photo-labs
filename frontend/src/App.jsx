@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 
-import useApplicationData from 'hooks/useApplicationData';
+import useApplicationData from 'hooks/useReducer';
 
 import topics from 'mocks/topics';
 import photos from 'mocks/photos';
