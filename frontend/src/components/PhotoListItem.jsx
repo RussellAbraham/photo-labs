@@ -12,10 +12,6 @@ const PhotoListItem = (props) => {
   } = props.data;
   /* Insert React */
   
-  const handlePhotoClick = () => {
-    onPhotoClick()
-  };
-
   return (
     <div className="photo-list__item">
       <PhotoFavButton isFavourited={isFavourited} toggleFavourites={toggleFavourites} />

@@ -39,8 +39,8 @@ const App = () => {
 
   return (
     <div className="App">
-      <HomeRoute topics={topics} photos={photos} onPhotoClick={openModal} favourites={favourites} />
-      {isModalOpen && (<PhotoDetailsModal onClose={closeModal} selectedPhoto={selectedPhoto} favourites={favourites} />)}
+      <HomeRoute topics={topics} photos={photos} onPhotoClick={openModal} favourites={favourites} toggleFavourites={toggleFavourites} />
+      {isModalOpen && (<PhotoDetailsModal onClose={closeModal} selectedPhoto={selectedPhoto} favourites={favourites} toggleFavourites={toggleFavourites} />)}
     </div>
   );
 };

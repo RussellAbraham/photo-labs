@@ -5,7 +5,7 @@ import PhotoListItem from "./PhotoListItem";
 
 const PhotoList = (props) => {
   const {photos, toggleFavourites, favourites, onPhotoClick} = props;
-  const photosToRender = photos.map((data, index) => {
+  const PhotoListArray = photos.map((data, index) => {
     const isFavourited = favourites.includes(data.id);
     return (      
         <PhotoListItem
@@ -20,7 +20,7 @@ const PhotoList = (props) => {
 
   return (
     <ul className="photo-list">
-      {props.children || photosToRender}
+      {props.children || PhotoListArray}
     </ul>
   );
 

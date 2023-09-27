@@ -6,17 +6,7 @@ import PhotoList from "../components/PhotoList";
 
 const HomeRoute = (props) => {
 
-  const { topics, photos, onPhotoClick } = props;
-
-  const [favourites, setFavourites] = useState([]);
-  
-  const toggleFavourites = (photoId) => {
-    if(favourites.includes(photoId)){
-      setFavourites(favourites.filter((id) => id !== photoId))
-    } else {
-      setFavourites([...favourites, photoId])
-    }
-  };
+  const { topics, photos, onPhotoClick, favourites, toggleFavourites } = props;
 
   return (
     <div className="home-route">
