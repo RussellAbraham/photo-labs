@@ -1,6 +1,5 @@
 import React from 'react';
 
-import PhotoListItem from 'components/PhotoListItem';
 import PhotoList from 'components/PhotoList';
 import PhotoFavButton from 'components/PhotoFavButton';
 
