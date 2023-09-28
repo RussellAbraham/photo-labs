@@ -5,6 +5,7 @@ import TopicListItem from "./TopicListItem";
 
 const TopicList = (props) => {
   const {topics} = props;
+  console.log(topics)
   const topicsToRender = topics.map((topic, index)=>{
     return (
       <TopicListItem 

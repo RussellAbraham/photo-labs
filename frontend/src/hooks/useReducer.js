@@ -5,7 +5,9 @@ const initialState = {
   isModalOpen: false,
   selectedPhoto: null,
   favourites: [],
+  topics : [],
   photos: [], // Initialize photos array
+  topic : undefined
 };
 
 // Define action types
@@ -14,6 +16,8 @@ const actionTypes = {
   OPEN_MODAL: 'OPEN_MODAL',
   CLOSE_MODAL: 'CLOSE_MODAL',
   FETCH_PHOTOS: 'FETCH_PHOTOS', // New action type for fetching photos
+  FETCH_TOPICS : 'FETCH_TOPICS',
+  SET_TOPIC : 'SET_TOPIC'
 };
 
 // Reducer function to handle state updates
@@ -50,6 +54,18 @@ const reducer = (state, action) => {
         ...state,
         photos: photos, // Update the photos array with fetched data
       };
+      case actionTypes.FETCH_TOPICS:
+        const { topics } = action.payload;
+        return {
+          ...state,
+          topics: topics,
+        }; 
+      case actionTypes.SET_TOPIC:
+        const {topic} = action.payload;  
+        return {            
+          ...state,
+          topic: topic,
+        };              
     default:
       return state;
   }
@@ -61,15 +77,18 @@ const useApplicationData = () => {
 
   useEffect(() => {
     
+    let url = "/api/photos";
+
+    //If state topic is not undefined, then set URL to lead to topic photo content
+    if (state.topic !== undefined) {
+      url = `http://localhost:8001/api/topics/photos/${state.topic}`;
+    }
+
     fetch("http://localhost:8001/api/topics")
-    // parse JSON response received
     .then((response) => response.json())
-    // data = the parsed JSON response
     .then((data) => {
-      // Use dispatch to update the state properly
-      console.log(data)
+      dispatch({type : actionTypes.FETCH_TOPICS, payload : { data }})
     })
-    // Catch any errors and log them
     .catch((error) => {
       console.error("Error fetching topics:", error);
     });
@@ -83,7 +102,7 @@ const useApplicationData = () => {
       .catch((error) => {
         console.error("Error fetching photos:", error);
       });
-  }, []); // Ensure the effect runs only once when the component mounts
+  }, [state.topic]); // Ensure the effect runs only once when the component mounts
 
   const toggleFavourites = (photoId) => {
     // Dispatch the TOGGLE_FAVOURITES action
