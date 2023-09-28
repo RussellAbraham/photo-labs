@@ -6,19 +6,14 @@ import PhotoFavButton from 'components/PhotoFavButton';
 import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 
-import photos from 'mocks/photos';
-
-
-
 
 const findSimilarPhotos = (id, arr) => {
-  //const selectedPhoto = arr.find(photo => photo.id === id);
-  //return selectedPhoto.similar_photos;
-  return arr[id].similar_photos;
+  const selectedPhoto = arr.find(photo => photo.id === id);
+  return selectedPhoto.similar_photos;
 };
 
 const PhotoDetailsModal = (props) => {
-  const { onClose, selectedPhoto, favourites, toggleFavourites } = props;
+  const { onClose, selectedPhoto, favourites, toggleFavourites, photos } = props;
   const {
     id,
     location: { city, country },
