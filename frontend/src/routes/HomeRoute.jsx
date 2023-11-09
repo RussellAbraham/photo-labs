@@ -6,11 +6,11 @@ import PhotoList from "../components/PhotoList";
 
 const HomeRoute = (props) => {
 
-  const { topics, photos, onPhotoClick, favourites, toggleFavourites } = props;
+  const { topics, photos, onPhotoClick, favourites, toggleFavourites, updateTopic } = props;
 
   return (
     <div className="home-route">
-      <TopNavigation topics={topics} favourites={favourites} />
+      <TopNavigation topics={topics} favourites={favourites} updateTopic={updateTopic} />
       <PhotoList 
         photos={photos} 
         toggleFavourites={toggleFavourites} 

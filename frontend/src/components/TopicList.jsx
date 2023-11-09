@@ -4,13 +4,13 @@ import "../styles/TopicList.scss";
 import TopicListItem from "./TopicListItem";
 
 const TopicList = (props) => {
-  const {topics} = props;
-  console.log(topics)
+  const {topics, updateTopic} = props;
   const topicsToRender = topics.map((topic, index)=>{
     return (
       <TopicListItem 
         key={index}
         topic={topic}
+        updateTopic={updateTopic}
       />
     );
   });
